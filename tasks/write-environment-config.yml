@@ -26,3 +26,12 @@
     group: root
     mode: 'u=rw,go=r'
   when: java_is_default_installation
+
+
+- name: Setup java alternative
+  alternatives:
+    link: /usr/bin/java
+    name: java
+    path: '{{ java_home }}/bin/java'
+    priority: 1
+  when: java_is_default_installation
